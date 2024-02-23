@@ -8,8 +8,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = env('port')
-EMAIL_HOST_USER = env("EMAIL")
-EMAIL_HOST_PASSWORD = env("Email_Password")
+EMAIL_HOST_USER = env("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = env("EMAIL_HOST_PASSWORD")
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -19,7 +19,9 @@ SECRET_KEY = env("SECRET_KEY")
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['.vercel.app']
+ALLOWED_HOSTS = ['*']
+CSRF_TRUSTED_ORIGINS = ['https://spread-knowledge.onrender.com','https://*.127.0.0.1']
+
 
 
 # Application definition
