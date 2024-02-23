@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'profile.css' %}">
+{% endblock css %}
+
+
+{% block content %}
+
+    <div class = 'd-flex row justify-content-center align-items-center p-3'>
+        <div class = 'col-6 p-3'>
+            <span class = 'border border-2'>
+                {% if user.account.profile_pic %}
+                    <img class = 'w-75 border border' src="{{user.account.profile_pic.url}}" alt="">
+                {% else %}
+                <img class = 'w-75 border border' src="{% static 'avatar.jpg' %}" alt="">
+                {% endif %}
+            </span>
+        </div>
+        <div class = 'col-6 profile-right-side d-flex align-items-center row'>
+            <h5 class = 'col-12'>Welcome to your profile <big class = 'text-success'>{{request.user.first_name}} {{request.user.last_name}}</big></h5>
+            <h4 class = 'col-12 text-center'>Balance: <big class = 'text-success'>{{user.account.balance}}$</big> </h4>
+            <div class = 'd-flex gap-2 col-12'>
+                <div class = 'btn btn-info'>Update Profile</div>
+                <div class = 'btn btn-secondary'>Change Password</div>
+                
+                <div class = 'btn btn-danger'>Delete Account</div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+<!-- Bootstrap Table for Borrow Book from library-->
+
+
+
+<table class="table table-bordered text-center m-3">
+    {% if total %}
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Book</th>
+        <th scope="col">Price</th>
+        <th scope="col">Balance After Transaction</th>
+        <th scope="col">Time</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    {% endif %}
+    <tbody>
+          {% for item in items %}
+          <tr>
+            <th scope="row">{{item.id}}</th>
+            <td>{{item.book}}</td>
+            <td>{{item.book.borrow_price}}$</td>
+            <td>{{item.borrowTransaction.balance_after_transaction}}$</td>
+            <td>{{item.borrowing_time}}</td>
+            <td><a href = "{% url "returnBook" item.id %}" class = 'btn btn-success text-white'>Return book</a></td>
+          </tr>
+          
+          {% endfor %}
+    </tbody>
+  </table>
+
+
+
+
+
+{% endblock content %}

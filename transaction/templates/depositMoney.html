@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div><span><h3 class = 'bg-success text-center text-info'>Deposit Money</h3></span></div>
+
+<div class = 'bg-dark text-light p-5'>
+    <form method = "POST" class = 'm-auto w-25'>
+
+        {% csrf_token %}
+        {% load crispy_forms_tags %}
+
+        {{form | crispy}}
+
+        <button class = 'btn btn-success text-white' type="submit">Deposit</button>
+    </form>
+</div>
+{% endblock content %}
