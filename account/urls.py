@@ -6,7 +6,8 @@ urlpatterns = [
     path("login/", LoginView.as_view(), name = 'login'),
     path('logOut/', UserLogout, name = 'logout'),
     path("profile/", profile, name = 'profile'),
-    path("activate/<uid64>/<token>/onerender.com/", activate, name = 'active'),
+    # path("activate/<uid64>/<token>/onerender.com/", activate, name = 'active'),
+    path("activate/<uid64>/<token>", activate, name = 'active'),
 
     # path("profile/"),
 ]
