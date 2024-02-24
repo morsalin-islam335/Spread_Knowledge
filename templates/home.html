@@ -1,7 +1,62 @@
 {% extends "base.html" %}
 {% load static %}
+
+{% block title %}Homepage{% endblock title %}
 {% block css %}
-    <link rel="stylesheet" href="{% static 'style.css' %}">
+    {% comment %} <link rel="stylesheet" href="{% static 'style.css' %}"> {% endcomment %}
+    <style>
+
+      /* The animation code */
+@keyframes example {
+    0%   { left: 3%; color: rgb(20, 46, 46);}
+    10%  { left: 15%; color: burlywood; }
+    20%  { left: 30%; color: aqua; }
+    30%  { left: 45%; color: beige;}
+    40% { left: 60%; color: chocolate;}
+    50% { left: 67%; color: cornflowerblue;}
+    60% { left: 60%; color: darkgrey;}
+    70% { left: 45%; color: darkslategray;}
+    80% { left: 30%; color: lightgoldenrodyellow;}
+    90% { left: 15%; color: lightblue;}
+    100% { left: 3%; color: goldenrod;}
+}
+.animation {
+    position: relative; 
+    animation-name: example;
+    animation-duration: 10s; 
+    animation-iteration-count: infinite; /* Make it repeat infinitely */
+}
+
+
+.category-box{
+    width: 300px;
+    border: 2px solid gray;
+    background-color: rgb(33, 19, 3);
+}
+
+
+.cat-text{
+    color: darkorange;
+    text-align: center;
+}
+
+.category-items{
+    width: 200px;
+    text-align: center;
+    
+}
+
+
+.card{
+    background-color: darkgray;
+}
+
+.total_items{
+    color:rgb(86, 144, 139);
+}
+
+
+    </style>
 {% endblock css %}
 {% block content %}
 
@@ -18,7 +73,7 @@
 
         <div class = 'col-sm-12 col-md-12 col-lg-7'>
             <div class = 'static-img'>
-                <img class = 'w-100' src="{% static 'WebProfile.jpeg' %}" alt="Profile">
+                <img class = 'w-100'src="https://i.ibb.co/HDZ0PKD/Web-Profile.jpg" alt="web profile">
             </div>
         </div>
 

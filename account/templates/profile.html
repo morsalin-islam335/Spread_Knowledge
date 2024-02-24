@@ -2,10 +2,19 @@
 {% load static %}
 
 {% block css %}
-    <link rel="stylesheet" href="{% static 'profile.css' %}">
+    {% comment %} <link rel="stylesheet" href="{% static 'profile.css' %}"> {% endcomment %}
+
+    <style>
+        .profile-right-side{
+            width: 300px;
+            background-color: burlywood;
+            height: 400px;
+            
+        }
+    </style>
 {% endblock css %}
 
-
+{% block title %}User Profile{% endblock title %}
 {% block content %}
 
     <div class = 'd-flex row justify-content-center align-items-center p-3'>
