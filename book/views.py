@@ -19,6 +19,8 @@ from django.core.mail import EmailMultiAlternatives
 def details(request, id):
 
     book =  Book.objects.get(id = id)
+    # print('book',book)
+    bookCategories = book.category.all()
     borrowingRecord = 0
     reviewRecord = -1
 
@@ -28,14 +30,14 @@ def details(request, id):
         borrow = borrow.filter(book = book)
         # print("second")
         borrowingRecord = len(borrow)
-        print("borrowing record : ", borrowingRecord) # ei khana record check korbo
+        # print("borrowing record : ", borrowingRecord) # ei khana record check korbo
         # print("last")
 
         reviewRecord = Review.objects.filter(account = request.user.account)
         reviewRecord = reviewRecord.filter(book = book)
         reviewRecord = len(reviewRecord)
 
-        print("Review Record :", reviewRecord)
+        # print("Review Record :", reviewRecord)
 
     except:
         borrowingRecord = 0
@@ -66,8 +68,9 @@ def details(request, id):
     else:
 
         form = ReviewForm()
-    print("borrowing record :", borrowingRecord, " review record : ", reviewRecord )
-    return render(request, 'book_details.html', {"book": book, "form": form, 'borrowingRecord': borrowingRecord, "reviewRecord": reviewRecord})
+    # print("book categories :", bookCategories)
+    # print("borrowing record :", borrowingRecord, " review record : ", reviewRecord )
+    return render(request, 'book_details.html', {"book": book, "form": form, 'borrowingRecord': borrowingRecord, "reviewRecord": reviewRecord, "categories": bookCategories})
 
 
 

@@ -3,24 +3,24 @@ from account.models import Account
 
 # Create your models here.
 
+
+
 class Category(models.Model):
     name = models.CharField(max_length = 80, unique = True)
     slug = models.SlugField(max_length = 120)
 
     def __str__(self):
         return f"Category :{self.name}"
-
-
 class Book(models.Model):
     image = models.ImageField(upload_to = 'book/media/uploads/')
     title = models.CharField(max_length = 70)
     description = models.TextField()
-    category = models.OneToOneField(Category, on_delete = models.CASCADE)
+    category = models.ManyToManyField(Category)
 
     borrow_price = models.IntegerField(verbose_name = 'borrow price')
 
     def __str__(self):
-        return f"{self.title}"
+        return f"{self.title} {self.category}"
 
 
 
